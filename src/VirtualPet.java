@@ -1,43 +1,54 @@
+import java.util.Map;
 import java.util.Random;
 
 public class VirtualPet {
 
-	// String for name and food type
 	String name;
-	String foodType;
-	// Instance variables
-	int hunger = 60;
-	int thirst = 60;
-	int boredom = 60;
+	String breed;
 
-	// Method to make the tick random
+	int hunger;
+	int thirst;
+	int boredom;
+	
+	
+
+	public VirtualPet(String newName, String newBreed) {
+		name = newName;
+		breed = newBreed;
+		hunger = 50;
+		thirst = 50;
+		boredom = 50;
+
+	}
+
+	public VirtualPet(String newName, String newBreed, Integer newHunger, Integer newThirst, Integer newBoredom) {
+		name = newName;
+		breed = newBreed;
+		hunger = newHunger;
+		thirst = newThirst;
+		boredom = newBoredom;
+	}
+	// public String toString(){
+	// return name + " " + breed + " " + hunger + " " + thirst + " " + boredom;
+	// }
+	
+	
+
 	Random r = new Random();
 
-	// Quit method
-	void quit() {
-		System.exit(0);
-	}
-
-	// Method identifying dead
-	boolean dead() {
-		return hunger > 60 && thirst > 60 && boredom > 60;
-	}
-
-	// Tick method
+	//Tick method
 	void tick() {
-		hunger = hunger + r.nextInt(40);
-		thirst = thirst + r.nextInt(40);
-		boredom = boredom + r.nextInt(40);
+	hunger = hunger + r.nextInt(40);
+	thirst = thirst + r.nextInt(40);
+	boredom = boredom + r.nextInt(40);
+	}
+	public String toString() {
+		return name + " " + breed + " " + hunger + " " + thirst + " " + boredom;
 	}
 
-	// Hunger methods
-	void feedFish() {
+	// Hunger method
+	void feedPet() {
 		hunger = hunger - 25;
-	}
-	
-	void feedChicken() {
-		hunger = hunger - 20;
-		thirst = thirst + 10;
 	}
 
 	boolean isHungry() {
@@ -48,13 +59,8 @@ public class VirtualPet {
 		return hunger;
 	}
 
-	void feedSelf() {
-		hunger = hunger - 10;
-
-	}
-
 	// Thirst methods
-	void water() {
+	void waterPet() {
 		thirst = thirst - 5;
 		hunger = hunger + 5;
 	}
@@ -67,13 +73,8 @@ public class VirtualPet {
 		return thirst;
 	}
 
-	void waterSelf() {
-		thirst = thirst - 10;
-
-	}
-
 	// Boredom methods
-	void play() {
+	void playPet() {
 		boredom = boredom - 5;
 		thirst = thirst + 5;
 		hunger = hunger + 5;
@@ -85,11 +86,6 @@ public class VirtualPet {
 
 	int getBoredom() {
 		return boredom;
-	}
-
-	void playSelf() {
-		boredom = boredom - 10;
-
 	}
 
 }
