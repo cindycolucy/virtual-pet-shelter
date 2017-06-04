@@ -3,47 +3,42 @@ import java.util.Random;
 
 public class VirtualPet {
 
+	//Instance variables
 	String name;
 	String breed;
 
 	int hunger;
 	int thirst;
 	int boredom;
+	int cleanliness;
 	
-	
-
+	//Constructor that accepts VirtualPet and establishes default attributes for new pets
 	public VirtualPet(String newName, String newBreed) {
 		name = newName;
 		breed = newBreed;
 		hunger = 50;
 		thirst = 50;
 		boredom = 50;
+		cleanliness = 50;
 
 	}
-
-	public VirtualPet(String newName, String newBreed, Integer newHunger, Integer newThirst, Integer newBoredom) {
+	//Constructor creates an object that allows to add pets and populate values initially in the map
+	public VirtualPet(String newName, String newBreed, Integer newHunger, Integer newThirst, Integer newBoredom, Integer newCleanliness) {
 		name = newName;
 		breed = newBreed;
 		hunger = newHunger;
 		thirst = newThirst;
 		boredom = newBoredom;
+		cleanliness = newCleanliness;
 	}
-	// public String toString(){
-	// return name + " " + breed + " " + hunger + " " + thirst + " " + boredom;
-	// }
-	
-	
 
+	// Tick method
 	Random r = new Random();
 
-	//Tick method
 	void tick() {
-	hunger = hunger + r.nextInt(40);
-	thirst = thirst + r.nextInt(40);
-	boredom = boredom + r.nextInt(40);
-	}
-	public String toString() {
-		return name + " " + breed + " " + hunger + " " + thirst + " " + boredom;
+		hunger = hunger + r.nextInt(20);
+		thirst = thirst + r.nextInt(20);
+		boredom = boredom + r.nextInt(20);
 	}
 
 	// Hunger method
@@ -51,41 +46,23 @@ public class VirtualPet {
 		hunger = hunger - 25;
 	}
 
-	boolean isHungry() {
-		return hunger >= 20;
-	}
-
-	int getHunger() {
-		return hunger;
-	}
-
-	// Thirst methods
+	// Thirst method
 	void waterPet() {
-		thirst = thirst - 5;
-		hunger = hunger + 5;
+		thirst = thirst - 20;
+		hunger = hunger + 10;
 	}
+	
+	// Cleanliness method
+		void cleanPet() {
+			cleanliness = cleanliness + 20;
+		}
 
-	boolean isThirsty() {
-		return thirst >= 20;
-	}
-
-	int getThirst() {
-		return thirst;
-	}
-
-	// Boredom methods
+	// Boredom method
 	void playPet() {
-		boredom = boredom - 5;
-		thirst = thirst + 5;
-		hunger = hunger + 5;
+		boredom = boredom - 20;
+		thirst = thirst + 10;
+		hunger = hunger + 10;
 	}
-
-	boolean isBored() {
-		return boredom >= 20;
-	}
-
-	int getBoredom() {
-		return boredom;
-	}
-
+	
+	
 }

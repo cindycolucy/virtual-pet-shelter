@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,6 +13,7 @@ public class VirtualPetShelter {
 		}
 	}
 
+	// Method returning collection of all pets in the shelter
 	public Collection<VirtualPet> pets() {
 		return shelterPets.values();
 	}
@@ -23,11 +23,8 @@ public class VirtualPetShelter {
 		shelterPets.put(pet.name, pet);
 	}
 
-	public Collection getMap() {
-		return shelterPets.values();
-	}
-
-	// Method to feed all pets
+	// Method to feed all pets. For each VirtualPet in the map, run the feedPet
+	// method.
 	public void feedAll() {
 		for (VirtualPet p : shelterPets.values()) {
 			p.feedPet();
@@ -41,7 +38,14 @@ public class VirtualPetShelter {
 		}
 	}
 
-	// Method to get a pet
+	// Method to clean all pets
+	public void cleanAll() {
+		for (VirtualPet p : shelterPets.values()) {
+			p.cleanPet();
+		}
+	}
+
+	// Method to return a pet from the map by name
 	public VirtualPet getPet(String name) {
 		return shelterPets.get(name);
 
@@ -57,4 +61,12 @@ public class VirtualPetShelter {
 		shelterPets.remove(removedPet);
 	}
 
+	// Method identifying dead
+	// boolean dead() {
+	// for (VirtualPet v : shelterPets.values()) {
+	// if ((v.hunger > 100) || (v.thirst > 100) || (v.cleanliness < 50) ||
+	// (v.boredom > 100)) {
+	// return true;
+	// }
+	// }
 }
